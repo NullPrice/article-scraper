@@ -1,10 +1,10 @@
 # Article Scraper
 
-Very basic scrapy scraper that attempts to identify 'article' content based a given landing pages by making a ton of (configurable) assumptions around content sizes
+Very basic scrapy scraper that attempts to identify 'article' content by making a ton of (configurable) assumptions around content sizes
 
 ## Configuration
 
-Configration of the scraper can be done via environment variables. A `.env` has been checked in with some default `START_URLS` as an example. 
+Configration of the scraper can be done via environment variables. A `.env` has been checked in with some default `START_URLS` as an example. Further defaults and other scrapy specific settings can be set via the `settings.py` file.
 
 - `START_URLS` - A JSON list of target landing pages you want to start at
     - Example: `["https://www.sei.org/publications/", "https://www.bbc.co.uk/news/world"]`
@@ -13,7 +13,7 @@ Configration of the scraper can be done via environment variables. A `.env` has 
 - `ARTICLE_WORD_THRESHOLD` - Word count threshold before we consider a page we've landed on as an 'article'
     -  Example: `200`
 
-## Running
+## Getting started
 
 ### Via Docker
 
@@ -43,7 +43,16 @@ make local_run
 OR
 
 ```bash
-	pip install poetry
-	poetry install
-    poetry run scrapy crawl articles -O "$PWD"/output/output.json
+pip install poetry
+poetry install
+poetry run scrapy crawl articles -O "$PWD"/output/output.json
 ```
+
+
+## Limitations
+
+This is a very naive attempt at trying scrape links to articles
+
+- It is only looking at text content of `article` nodes to determine whether we are looking at articles, which does result in false results. 
+- Paginated landing pages aren't iterated through to try and grab further articles
+- Text content is all that is handled, I don't make an attempt at parsing a PDF file etc.  
