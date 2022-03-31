@@ -4,7 +4,7 @@ Very basic scrapy scraper that attempts to identify 'article' content by making 
 
 ## Configuration
 
-Configration of the scraper can be done via environment variables. A `.env` has been checked in with some default `START_URLS` as an example. Further defaults and other scrapy specific settings can be set via the `settings.py` file.
+Configuration of the scraper can be done via environment variables. A `.env` has been checked in with some default `START_URLS` as an example. Further defaults and other scrapy specific settings can be set via the `settings.py` file.
 
 - `START_URLS` - A JSON list of target landing pages you want to start at
     - Example: `["https://www.sei.org/publications/", "https://www.bbc.co.uk/news/world"]`
